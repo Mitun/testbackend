@@ -18,6 +18,7 @@ const Outstanding = ({}) => {
 
   //Now ether
   const [addressE, setAddressE] = useState(null);
+  const [balanceCheck, setBalanceCheck] = useState(false);
   const [connectedBlanceNow, setConnectedBlanceNow] = useState(0);
   const [contract, setContract] = useState(null);
   const [showForm, setShowForm] = useState(false);
@@ -510,6 +511,7 @@ const Outstanding = ({}) => {
       console.log(mydeporesult0);
       console.log("Balance:", balanceInDecimal);
       setConnectedBlanceNow(balanceInDecimal);
+      setBalanceCheck(true);
     } catch (error) {
       console.error("Error getting balance", error);
     }
@@ -762,7 +764,7 @@ const Outstanding = ({}) => {
           <div className="max-w-sm rounded overflow-hidden shadow-lg bg-orange-100 mb-10 ">
             <div className="px-6 py-4 ">
               <div className=" font-bold h-20 text-xl mb-2 text-center mt-12">
-                CEX PROJECT
+                NEW EXCITING CEX PROJECT
               </div>
             </div>
           </div>
@@ -773,9 +775,11 @@ const Outstanding = ({}) => {
             >
               Check Balance
             </button>
-            <p className="font-bold">
-              You current balance is: {connectedBlanceNow} TST
-            </p>
+            {balanceCheck && isConnected && (
+              <p className="font-bold">
+                You current balance is: {connectedBlanceNow} TST
+              </p>
+            )}
           </div>
 
           {/* <div className="grid grid-cols-2 gap-6">
